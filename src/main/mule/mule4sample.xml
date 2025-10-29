@@ -27,20 +27,23 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 		
 		<logger level="INFO" 
 				doc:name="Logger" 
-				message="${env}" />
+				message="Environment - ${env}" />
 		
 		<logger level="INFO" 
-				message="${scheduler.timeZone}" 
+				message="TZ from properties - ${scheduler.timeZone}" 
 				doc:name="Logger"/>
 
 		<logger level="INFO" 
-				message="${scheduler.cronJobIn}" 
+				message="Cron IN from properties - ${scheduler.cronJobIn}" 
 				doc:name="Logger"/>
 
 		<logger level="INFO" 
-				message="${scheduler.cronJobOut}" 
+				message="Cron OUT from properties - ${scheduler.cronJobOut}" 
 				doc:name="Logger"/>
 
+		<logger level="INFO" 
+				message="Port from properties - ${http.port}" 
+				doc:name="Logger"/>
 	</flow>
 
 	<flow name="LogEnvironmentFlow" >

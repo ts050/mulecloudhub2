@@ -7,12 +7,40 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 
 	<global-property doc:name="Global Property" name="env" value="sandbox" />
 	<configuration-properties file="config/${env}.yaml"/>
-	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="7ea03dd2-d479-47b5-a807-33fcf93f5522" >
-		<http:listener-connection host="localhost" port="9087" />
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config">
+		<http:listener-connection host="0.0.0.0" port="${http.port}" />
 	</http:listener-config>
-	<flow name="mule4sampleFlow" doc:id="87842939-366f-4977-bca6-cb74f37527ce" >
+	<!-- <flow name="mule4sampleFlow" doc:id="87842939-366f-4977-bca6-cb74f37527ce" >
 		<http:listener doc:name="Listener" doc:id="505ae488-9372-45e1-b1c8-2c97ebad9d44" config-ref="HTTP_Listener_config" path="/test"/>
 		<logger level="INFO" doc:name="Logger" doc:id="da038093-a0d7-41d0-b094-c5a96ac293a3" />
+	</flow> -->
+	<flow name="hello-muleFlow" >
+		<http:listener doc:name="Listener"
+						config-ref="HTTP_Listener_config"
+						path="/hellomule"/>
+		<set-payload value="Hello Mule!"
+					doc:name="Set Payload"
+					mimeType="text/plain"/>
+		<logger level="INFO"
+				doc:name="Logger"
+				message="#[attributes.requestPath]"/>
+		
+		<logger level="INFO" 
+				doc:name="Logger" 
+				message="${env}" />
+		
+		<logger level="INFO" 
+				message="${scheduler.timeZone}" 
+				doc:name="Logger"/>
+
+		<logger level="INFO" 
+				message="${scheduler.cronJobIn}" 
+				doc:name="Logger"/>
+
+		<logger level="INFO" 
+				message="${scheduler.cronJobOut}" 
+				doc:name="Logger"/>
+
 	</flow>
 
 	<flow name="LogEnvironmentFlow" >

@@ -3,6 +3,8 @@ scheduler:
     cronJobOut: "0 30 0/12 ? * * *"
     timeZone: "CST"
 
-
 http:
-    port: "8080"
+    port: "HTTP_PORT"
+
+secret:
+    value: "![SECRET_VALUE]"

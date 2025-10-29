@@ -4,4 +4,7 @@ scheduler:
     timeZone: "IST"
 
 http:
-    port: "8081"
+    port: "HTTP_PORT"
+
+secret:
+    value: "![SECRET_VALUE]"

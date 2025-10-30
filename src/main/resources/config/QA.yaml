@@ -1,0 +1,10 @@
+scheduler:  
+    cronJobIn: "0 0/20 * * *  ? * " 
+    cronJobOut: "0 30 0/12 ? * * *"
+    timeZone: "MST"
+
+http:
+    port: "HTTP_PORT"
+
+secret:
+    value: "![SECRET_VALUE]"
